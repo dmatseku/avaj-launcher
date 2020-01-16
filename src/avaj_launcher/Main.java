@@ -7,8 +7,10 @@ public class Main {
 
     public static void
     main(String[] args) {
-        if (args.length != 1)
-            throw new RuntimeException("Invalid number of arguments");
+        if (args.length != 1) {
+            System.out.println("Invalid number of arguments");
+            return;
+        }
 
         try {
             Input input = new Input(args[0]);
