@@ -17,39 +17,39 @@ public class Helicopter extends Aircraft implements Flyable {
 	@Override
 	public void
 	updateConditions() {
-		String	weather = weatherTower.getWeather(coordinates);
+		String	weather = weatherTower.getWeather(super.coordinates);
 		switch (weather) {
 			case "SUN":
-				coordinates = new Coordinates(coordinates.getLongitude() + 10,
-					coordinates.getLatitude(), coordinates.getHeight() + 2);
+				super.coordinates = new Coordinates(super.coordinates.getLongitude() + 10,
+					super.coordinates.getLatitude(), super.coordinates.getHeight() + 2);
 				Output.getOutput().write("Helicopter#" + name + "(" + id +
 						"): Oh. it's hot");
 				break;
 			case "RAIN":
-				coordinates = new Coordinates(coordinates.getLongitude() + 5,
-					coordinates.getLatitude(), coordinates.getHeight());
+				super.coordinates = new Coordinates(super.coordinates.getLongitude() + 5,
+					super.coordinates.getLatitude(), super.coordinates.getHeight());
 				Output.getOutput().write("Helicopter#" + name + "(" + id +
 						"): It's wet outside");
 				break;
 			case "FOG":
-				coordinates = new Coordinates(coordinates.getLongitude() + 1,
-					coordinates.getLatitude(), coordinates.getHeight());
+				super.coordinates = new Coordinates(super.coordinates.getLongitude() + 1,
+					super.coordinates.getLatitude(), super.coordinates.getHeight());
 				Output.getOutput().write("Helicopter#" + name + "(" + id +
 						"): I can't see anything!");
 				break;
 			case "SNOW":
-				coordinates = new Coordinates(coordinates.getLongitude(),
-					coordinates.getLatitude(), coordinates.getHeight() - 12);
+				super.coordinates = new Coordinates(super.coordinates.getLongitude(),
+					super.coordinates.getLatitude(), super.coordinates.getHeight() - 12);
 				Output.getOutput().write("Helicopter#" + name + "(" + id +
 					"): It is cold");
 				break;
 			default:
-				coordinates = new Coordinates(coordinates.getLongitude(),
-					coordinates.getLatitude(), coordinates.getHeight() + 1);
+				super.coordinates = new Coordinates(super.coordinates.getLongitude(),
+					super.coordinates.getLatitude(), super.coordinates.getHeight() + 1);
 				break;
 		}
 
-		if (coordinates.getHeight() == 0) {
+		if (super.coordinates.getHeight() == 0) {
 			weatherTower.unregister(this);
 			Output.getOutput().write("Helicopter#" + name + "(" + id +
 					") Landing.");
