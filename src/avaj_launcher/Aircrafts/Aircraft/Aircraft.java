@@ -2,7 +2,7 @@ package avaj_launcher.Aircrafts.Aircraft;
 
 import avaj_launcher.Aircrafts.Coordinates;
 
-public abstract class Aircraft {
+public class Aircraft {
 
     protected long          id;
     protected String        name;
