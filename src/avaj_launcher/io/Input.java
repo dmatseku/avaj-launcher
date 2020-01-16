@@ -1,4 +1,4 @@
-package avaj_launcher;
+package avaj_launcher.io;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;

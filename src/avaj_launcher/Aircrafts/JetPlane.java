@@ -1,15 +1,15 @@
-package avaj_launcher.Flyable.Aircraft.Vehicles;
+package avaj_launcher.Aircrafts;
 
-import avaj_launcher.Coordinates.Coordinates;
-import avaj_launcher.Flyable.Aircraft.Aircraft;
-import avaj_launcher.Flyable.Flyable;
-import avaj_launcher.Tower.Towers.WeatherTower;
+import avaj_launcher.Aircrafts.Aircraft.Aircraft;
+import avaj_launcher.Aircrafts.Aircraft.Flyable;
+import avaj_launcher.io.Output;
+import avaj_launcher.WeatherTower;
 
 public class JetPlane extends Aircraft implements Flyable {
 
-	WeatherTower weatherTower;
+	private WeatherTower	weatherTower;
 
-	public
+
 	JetPlane(String name, Coordinates coordinates) {
 		super(name, coordinates);
 	}
@@ -22,29 +22,25 @@ public class JetPlane extends Aircraft implements Flyable {
 			case "SUN":
 				coordinates = new Coordinates(coordinates.getLongitude(),
 					coordinates.getLatitude() + 10, coordinates.getHeight() + 2);
-				System.out.println("JetPlane#" + name + "(" + id +
-						") (Height = " + coordinates.getHeight() +
+				Output.getOutput().write("JetPlane#" + name + "(" + id +
 						"): I wanted a cocktail :)");
 				break;
 			case "RAIN":
 				coordinates = new Coordinates(coordinates.getLongitude(),
 					coordinates.getLatitude() + 5, coordinates.getHeight());
-				System.out.println("JetPlane#" + name + "(" + id +
-						") (Height = " + coordinates.getHeight() +
+				Output.getOutput().write("JetPlane#" + name + "(" + id +
 						"): It's raining. Better watch out for lightings.");
 				break;
 			case "FOG":
 				coordinates = new Coordinates(coordinates.getLongitude(),
 					coordinates.getLatitude() + 1, coordinates.getHeight());
-				System.out.println("JetPlane#" + name + "(" + id +
-						") (Height = " + coordinates.getHeight() +
+				Output.getOutput().write("JetPlane#" + name + "(" + id +
 						"): Flying on devices.");
 				break;
 			case "SNOW":
 				coordinates = new Coordinates(coordinates.getLongitude(),
 					coordinates.getLatitude(), coordinates.getHeight() - 7);
-				System.out.println("JetPlane#" + name + "(" + id +
-						") (Height = " + coordinates.getHeight() +
+				Output.getOutput().write("JetPlane#" + name + "(" + id +
 						"): It's raining. Better watch out for lightings.");
 				break;
 			default:
@@ -55,10 +51,9 @@ public class JetPlane extends Aircraft implements Flyable {
 
 		if (coordinates.getHeight() == 0) {
 			weatherTower.unregister(this);
-			System.out.println("JetPlane#" + name + "(" + id +
-					") (Height = " + coordinates.getHeight() +
-					"): Landing.");
-			System.out.println("Tower says: JetPlane#" + name + "(" + id
+			Output.getOutput().write("JetPlane#" + name + "(" + id +
+					") Landing.");
+			Output.getOutput().write("Tower says: JetPlane#" + name + "(" + id
 					+ ") unregistered from weather tower.");
 		}
 	}
@@ -68,7 +63,7 @@ public class JetPlane extends Aircraft implements Flyable {
 	registerTower(WeatherTower weatherTower) {
 		this.weatherTower = weatherTower;
 		weatherTower.register(this);
-		System.out.println("Tower says: JetPlane#" + name + "(" + id
+		Output.getOutput().write("Tower says: JetPlane#" + name + "(" + id
 				+ ") registered to weather tower.");
 	}
 }

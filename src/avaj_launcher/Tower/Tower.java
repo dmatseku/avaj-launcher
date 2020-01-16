@@ -1,6 +1,6 @@
 package avaj_launcher.Tower;
 
-import avaj_launcher.Flyable.Flyable;
+import avaj_launcher.Aircrafts.Aircraft.Flyable;
 import java.util.ArrayList;
 
 public class Tower {

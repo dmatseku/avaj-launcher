@@ -1,1 +1,6 @@
 *.class
+out
+avaj_launcher.iml
+*test
+simulation.txt
+.idea

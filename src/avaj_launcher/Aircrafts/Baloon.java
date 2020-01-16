@@ -1,15 +1,15 @@
-package avaj_launcher.Flyable.Aircraft.Vehicles;
+package avaj_launcher.Aircrafts;
 
-import avaj_launcher.Coordinates.Coordinates;
-import avaj_launcher.Flyable.Aircraft.Aircraft;
-import avaj_launcher.Flyable.*;
-import avaj_launcher.Tower.Towers.WeatherTower;
+import avaj_launcher.Aircrafts.Aircraft.Flyable;
+import avaj_launcher.Aircrafts.Aircraft.Aircraft;
+import avaj_launcher.io.Output;
+import avaj_launcher.WeatherTower;
 
 public class Baloon extends Aircraft implements Flyable {
 
-	WeatherTower weatherTower;
+	private WeatherTower	weatherTower;
 
-	public
+
 	Baloon(String name, Coordinates coordinates) {
 		super(name, coordinates);
 	}
@@ -22,29 +22,25 @@ public class Baloon extends Aircraft implements Flyable {
 			case "SUN":
 				coordinates = new Coordinates(coordinates.getLongitude() + 2,
 					coordinates.getLatitude(), coordinates.getHeight() + 4);
-				System.out.println("Baloon#" + name + "(" + id +
-						") (Height = " + coordinates.getHeight() +
+				Output.getOutput().write("Baloon#" + name + "(" + id +
 						"): Good weather outside!");
 				break;
 			case "RAIN":
 				coordinates = new Coordinates(coordinates.getLongitude(),
 					coordinates.getLatitude(), coordinates.getHeight() - 5);
-				System.out.println("Baloon#" + name + "(" + id +
-						") (Height = " + coordinates.getHeight() +
+				Output.getOutput().write("Baloon#" + name + "(" + id +
 						"): Good I have a furnace!");
 				break;
 			case "FOG":
 				coordinates = new Coordinates(coordinates.getLongitude(),
 					coordinates.getLatitude(), coordinates.getHeight() - 3);
-				System.out.println("Baloon#" + name + "(" + id +
-						") (Height = " + coordinates.getHeight() +
+				Output.getOutput().write("Baloon#" + name + "(" + id +
 						"): Visibility is zero!");
 				break;
 			case "SNOW":
 				coordinates = new Coordinates(coordinates.getLongitude(),
 					coordinates.getLatitude(), coordinates.getHeight() - 15);
-				System.out.println("Baloon#" + name + "(" + id +
-						") (Height = " + coordinates.getHeight() +
+				Output.getOutput().write("Baloon#" + name + "(" + id +
 						"): To melt a furnace is very difficult!");
 				break;
 			default:
@@ -55,10 +51,9 @@ public class Baloon extends Aircraft implements Flyable {
 
 		if (coordinates.getHeight() == 0) {
 			weatherTower.unregister(this);
-			System.out.println("Baloon#" + name + "(" + id +
-					") (Height = " + coordinates.getHeight() +
-					"): Landing.");
-			System.out.println("Tower says: Baloon#" + name + "(" + id
+			Output.getOutput().write("Baloon#" + name + "(" + id +
+					") Landing.");
+			Output.getOutput().write("Tower says: Baloon#" + name + "(" + id
 					+ ") unregistered from weather tower.");
 		}
 	}
@@ -68,7 +63,7 @@ public class Baloon extends Aircraft implements Flyable {
 	registerTower(WeatherTower weatherTower) {
 		this.weatherTower = weatherTower;
 		weatherTower.register(this);
-		System.out.println("Tower says: Baloon#" + name + "(" + id
+		Output.getOutput().write("Tower says: Baloon#" + name + "(" + id
 							+ ") registered to weather tower.");
 	}
 }

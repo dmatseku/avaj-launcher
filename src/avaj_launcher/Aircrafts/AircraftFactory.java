@@ -1,24 +1,23 @@
-package avaj_launcher.Flyable.Aircraft;
+package avaj_launcher.Aircrafts;
 
-import avaj_launcher.Coordinates.Coordinates;
-import avaj_launcher.Flyable.Flyable;
-import avaj_launcher.Flyable.Aircraft.Vehicles.*;
+import avaj_launcher.Aircrafts.Aircraft.Flyable;
 
 import java.util.*;
 
 public class AircraftFactory {
 
-	private interface				ICreator {
+	private interface							ICreator {
 		Flyable	create(String name, int longitude, int latitude, int height);
 	}
 
-	private static List<String>		types =
-			Arrays.asList("Baloon", "JetPlane", "Helicopter");
+	private static HashMap<String, ICreator>	creators = new HashMap<>();
 
-	private static List<ICreator>	creators =
-								Arrays.asList(AircraftFactory::newBaloon,
-											AircraftFactory::newJetPlane,
-											AircraftFactory::newHelicopter);
+	static {
+		creators.put("Baloon", AircraftFactory::newBaloon);
+		creators.put("JetPlane", AircraftFactory::newJetPlane);
+		creators.put("Helicopter", AircraftFactory::newHelicopter);
+	}
+
 
 
 	private static Flyable
@@ -42,10 +41,10 @@ public class AircraftFactory {
 	public static Flyable
 	newAircraft(String type, String name,
 								  int longitude, int latitude, int height) {
-		int	index = types.indexOf(type);
+		ICreator	creator = creators.get(type);
 
-		if (index < 0)
+		if (creator == null)
 			throw new RuntimeException("Unknown type");
-		return (creators.get(index).create(name, longitude, latitude, height));
+		return (creator.create(name, longitude, latitude, height));
 	}
 }

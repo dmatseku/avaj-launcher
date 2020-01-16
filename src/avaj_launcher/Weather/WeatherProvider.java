@@ -1,12 +1,12 @@
 package avaj_launcher.Weather;
 
-import avaj_launcher.Coordinates.Coordinates;
+import avaj_launcher.Aircrafts.Coordinates;
 
 import java.util.Random;
 
 public class WeatherProvider {
 	private static WeatherProvider	weatherProvider = new WeatherProvider();
-	private String[]				weather = {
+	private static String[]			weather = {
 			"RAIN",
 			"FOG",
 			"SUN",
@@ -24,18 +24,18 @@ public class WeatherProvider {
 
 	public String
 	getCurrentWeather(Coordinates coordinates) {
-		int randResLong = 0;
-		int randResLat = 0;
-		int randResHeight = 0;
+		int randResLong;
+		int randResLat;
+		int randResHeight;
 		Random rand = new Random(coordinates.getHeight()
 				+ coordinates.getLongitude() + coordinates.getLatitude());
 
-		randResLong = rand.nextInt(coordinates.getLongitude()) + 1;
-		randResLat = rand.nextInt(coordinates.getLatitude()) + 1;
-		randResHeight = rand.nextInt(coordinates.getHeight()) + 1;
+		randResLong = rand.nextInt(coordinates.getLongitude() + 1) + 1;
+		randResLat = rand.nextInt(coordinates.getLatitude() + 1) + 1;
+		randResHeight = rand.nextInt(coordinates.getHeight() + 1) + 1;
 
 		int res = rand.nextInt(randResLong + randResHeight
-						+ randResLat / 3) % weather.length;
+						+ randResLat / 3 + 1) % weather.length;
 
 		return (weather[res]);
 	}
