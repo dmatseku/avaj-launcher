@@ -5,6 +5,8 @@
 This is an aircraft simulation program. All information is in the file "avaj-launcher.en.pdf".
 The goal of this project is to learn how to use the uml-diagrams.
 
+![visual image](https://github.com/dmatseku/avaj-launcher/blob/master/avaj_uml.jpg)
+
 ## Execution ##
 
 Execute the following commands:
