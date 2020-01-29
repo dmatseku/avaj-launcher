@@ -8,5 +8,5 @@ The goal of this project is to learn how to use the uml-diagrams.
 
 ## Execution ##
 
-Just execute run.sh file:
+Just execute run.sh file from the root directory:
     ./run.sh <filename for program>
