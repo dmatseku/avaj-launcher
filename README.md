@@ -17,4 +17,4 @@ Execute the following commands:
 
 ## Problems ##
 
-If you have problems compiling, then duplicate the first line in the generated "run" file and retry commands above.
+If you have problems compiling, then duplicate the first line in the generated "run" file and retry the second command above.
