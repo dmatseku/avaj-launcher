@@ -41,3 +41,7 @@ the input file looks like this:
     Baloon B3 102 22 34
     JetPlane J2 11 99 768
     Helicopter H4 223 23 54
+
+## Output file ##
+
+The program generates file "simulation.txt" with executing results.
