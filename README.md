@@ -3,10 +3,16 @@
 42 School project.
 
 This is an aircraft simulation program. All information is in the file "avaj-launcher.en.pdf".
-
 The goal of this project is to learn how to use the uml-diagrams.
 
 ## Execution ##
 
-Just execute run.sh file from the root directory:
-    ./run.sh <filename for program>
+Execute the following commands:
+
+    find . -name "*.java" > run
+    javac -sourcepath @run
+    java avaj_launcher/Main <filename for program>
+
+## Problems ##
+
+If you have problems compiling, then duplicate the first line in the generated "run" file and retry commands above.
